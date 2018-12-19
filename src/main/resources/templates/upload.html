@@ -1,0 +1,240 @@
+<!--
+  _______
+ |__   __|
+    | |  ___  _ __ __      __ ___  _ __
+    | | / _ \| '__|\ \ /\ / // _ \| '__|
+    | ||  __/| |    \ V  V /|  __/| |
+    |_| \___||_|     \_/\_/  \___||_|
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:include="include/appstore_edit_inc::commonHeaderCustom('发布应用',~{::style})">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<header th:include="include/appstore_edit_inc::commonHeaderContent"/>
+
+<!-- 正文开始 -->
+<div th:include="include/appstore_edit_inc::content(~{::formArea})">
+<formArea>
+    <!--表单区域开始-->
+    <div>
+        <dl class="tab-content">
+            <form id="form_app" method="POST">
+                <h1>应用信息</h1>
+                <p style="color: red;">注意：这里的信息必须与plugin.properties保存一致，特别是appCode,否则会导致安装异常。</p>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用名称：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppName" name="AppName" placeholder="输入应用名称">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用编码：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppCode" name="AppCode" placeholder="输入应用编码，非常重要，依据这个唯一标示App，例如：CPlusCloud.Feedback">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用版本：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppVersion" name="AppVersion" placeholder="输入应用版本，非常重要，例如：1.0.0.0">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>首页链接：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppHomeUrl" name="AppHomeUrl" placeholder="输入应用首页链接">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用依赖：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppDependence" name="AppDependence" placeholder="输入应用依赖，例如：,appCode1.appCpde2,">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用描述：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppRemark" name="AppRemark" placeholder="App简介">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>升级说明：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppUpNote" name="AppUpNote" value="beta1" placeholder="输入升级说明">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>所属行业：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required" id="AppInd" name="AppInd" value="1">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标16*16：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515" id="AppImgUrl16" name="AppImgUrl16" value="app.png">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标32*32：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515" id="AppImgUrl32" name="AppImgUrl32" value="app.png">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标75*75：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515" id="AppImgUrl75" name="AppImgUrl75" value="app.png">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标190*190：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515" id="AppImgUrl190" name="AppImgUrl190" value="app.png">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用链接：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required" id="AppLink" placeholder="（默认根目录：appCode+.zip）" name="AppLink">
+                    </dd>
+                </dl>
+                <h1>安装文件</h1>
+                <dl>
+                    <dt><em class="imp">*</em>上传附件：</dt>
+                    <dd>
+                        <input type="file" name="AppFile" id="AppFile" class="form-control wid515  required">
+                        <p>文件大小不得超过100M。格式必须为zip。上传之前请确保manifist信息与上面保存一致。</p>
+                        <p style="color: red;">文件名格式：appCode+版本号.zip，例如：app-store-plugin-1.0.0.zip</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <!--表单错误提示区-->
+                        <div id="form-msg">
+                            <div class="alert alert-success" role="alert" style="display: none;">成功</div>
+                            <div class="alert alert-info" role="alert" style="display: none;">信息</div>
+                            <div class="alert alert-warning" role="alert" style="display: none;">警告</div>
+                            <div class="alert alert-danger" role="alert" style="display: none;">错误</div>
+                        </div>
+                        <button id="btn-submit" class="btn btn btn-success btn-large">发布应用</button>
+                    </dd>
+                </dl>
+            </form>
+        </dl>
+    </div>
+    <!--表单区域结束-->
+</formArea>
+</div>
+<!-- 正文开始 -->
+
+<footer th:include="include/appstore_edit_inc::commonFooterCustom(~{::script})">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#form_app").validate({
+                rules: {
+                    AppName: {
+                        rangelength: [2, 200]
+                    }
+                },
+                invalidHandler: function(e, validator) {
+                    var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+                    $(".alert-danger").html(msg).show();
+                },
+                focusInvalid: false,
+                errorPlacement: function(error, element) {
+                    var errorMsg = error[0].innerHTML;
+                    var elementName = element[0].name;
+                    $("#" + elementName).formtip(errorMsg);
+                    $("#" + elementName).attr("placeholder", errorMsg);
+                },
+                success: function(element) {
+                    var elem = $(element)[0].htmlFor;
+                    $("#" + elem).poshytip('disable');
+                    $("#" + elem).poshytip('destroy');
+                    $("#" + elem).removeClass("error").addClass("success");
+                }
+            });
+        });
+        $(function() {
+            $("#btn-submit").on("click", function() {
+                if (!$("#form_app").valid()) {
+                    return false;
+                }
+                var data = $("#form_app").serialize();
+                console.log(data);
+                $.ajax({
+                    type: "post",
+                    cache: false,
+                    url: "/api/AppStoreApi/UploadAppToAppStore",
+                    data: data,
+                    dataType: "json",
+                    beforeSend: function() {
+                        //showMsg("添加中，请稍后...");
+                    },
+                    complete: function() {
+                        //showMsg("完成...");
+                    },
+                    success: function(result) {
+                        var status = result.ResultType;
+                        if (status == 3) {
+                            $("#form-msg div").hide();
+                            $(".alert-success").html("应用发布成功！").show();
+                        } else {
+                            $(".alert-danger").html("系统异常，应用发布失败！错误信息：" + result.Message).show();
+                        }
+
+                    },
+                    error: function() {
+                        $(".alert-danger").html("系统异常！").show();
+                    }
+                });
+                //阻止表单提交
+                return false;
+            });
+
+            $("#AppName").blur(function() {
+                var appName = $(this).val();
+                $("#AppRemark").val(appName);
+            });
+
+            $("#AppVersion").blur(function() {
+                var appCode = $("#AppCode").val();
+                var appVersion = $(this).val();
+                $("#AppLink").val("/Upload/" + appCode + appVersion + ".zip");
+            });
+
+        });
+    </script>
+</footer>
+</body>
+</html>
