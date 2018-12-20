@@ -24,18 +24,18 @@ public class AppStoreController {
     public String appStore(Model model) {
         SiteConfig siteConfig = commonService.getSiteConfig();
         model.addAttribute("siteConfig", siteConfig);
-        return "index";
+        return "appstore/index";
     }
 
     @RequestMapping("/upload")
     public String upload(Model model) {
         SiteConfig siteConfig = commonService.getSiteConfig();
         model.addAttribute("siteConfig", siteConfig);
-        return "upload";
+        return "appstore/upload";
     }
 
     @RequestMapping("/copyright")
     public String copyright() {
-        return "copyright";
+        return "appstore/copyright";
     }
 }

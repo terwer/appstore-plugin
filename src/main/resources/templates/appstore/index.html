@@ -8,12 +8,12 @@
 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
-<head th:include="include/appstore_list_inc::commonHeaderCustom('应用商店',~{::style})">
+<head th:include="appstore/include/list_inc::commonHeaderCustom('应用商店',~{::style})">
     <style type="text/css">
     </style>
 </head>
 <body>
-<header th:include="include/appstore_list_inc::commonHeaderContent"/>
+<header th:include="appstore/include/list_inc::commonHeaderContent"/>
 
 <!-- 正文开始 -->
 <div>
@@ -24,7 +24,7 @@
 </div>
 <!-- 正文开始 -->
 
-<footer th:include="include/appstore_list_inc::commonFooterCustom(~{::script})">
+<footer th:include="appstore/include/list_inc::commonFooterCustom(~{::script})">
     <script type="text/javascript">
     </script>
 </footer>

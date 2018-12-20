@@ -8,15 +8,15 @@
 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
-<head th:include="include/appstore_edit_inc::commonHeaderCustom('发布应用',~{::style})">
+<head th:include="appstore/include/edit_inc::commonHeaderCustom('发布应用',~{::style})">
     <style type="text/css">
     </style>
 </head>
 <body>
-<header th:include="include/appstore_edit_inc::commonHeaderContent"/>
+<header th:include="appstore/include/edit_inc::commonHeaderContent"/>
 
 <!-- 正文开始 -->
-<div th:include="include/appstore_edit_inc::content(~{::formArea})">
+<div th:include="appstore/include/edit_inc::content(~{::formArea})">
 <formArea>
     <!--表单区域开始-->
     <div>
@@ -157,7 +157,7 @@
 </div>
 <!-- 正文开始 -->
 
-<footer th:include="include/appstore_edit_inc::commonFooterCustom(~{::script})">
+<footer th:include="appstore/include/edit_inc::commonFooterCustom(~{::script})">
     <script type="text/javascript">
         $(document).ready(function() {
             $("#form_app").validate({
