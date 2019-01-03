@@ -13,14 +13,14 @@
     </style>
 </head>
 <body>
-<header th:include="appstore/include/list_inc::commonHeaderContent"/>
+<header th:include="appstore/include/list_inc::commonHeaderContent"></header>
 
 <!-- 正文开始 -->
 <div>
     <h1>应用商店api列表</h1>
     <a href="/api/AppStoreApi/GetAppStoreList?format=json&pageIndex=1&pageSize=10&SearchPhrase=">/api/AppStoreApi/GetAppStoreList?format=json&pageIndex=1&pageSize=10&SearchPhrase=</a><br />
     <a href="/api/AppStoreApi/GetAppByAppCode?appCode=CPlusCloud.Feedback&format=json">/api/AppStoreApi/GetAppByAppCode?appCode=CPlusCloud.Feedback&format=json</a><br/>
-    <button class="btn btn-success btn-large" onclick="location.href='/UploadApp/'">上传应用到商店</button>
+    <button class="btn btn-success btn-large" onclick="location.href='/appstore/upload'">上传应用到商店</button>
 </div>
 <!-- 正文开始 -->
 
